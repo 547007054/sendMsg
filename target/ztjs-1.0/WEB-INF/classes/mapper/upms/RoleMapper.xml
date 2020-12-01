@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztjs.platform.mapper.upms.RoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="roleMap" type="com.ztjs.platform.model.po.upms.RolePo">
+        <id column="ID" property="id" javaType="int" jdbcType="INTEGER"/>
+        <result column="ROLE_NAME" property="roleName" javaType="string" jdbcType="VARCHAR"/>
+        <result column="ROLE_TYPE" property="roleType" javaType="int" jdbcType="INTEGER"/>
+        <result column="DESCRIPTION" property="description" javaType="string" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 根据用户ID获取角色信息列表 -->
+    <select id="getRoleByUserId" resultMap="roleMap" parameterType="int">
+		SELECT
+		    r.ID, r.ROLE_NAME, r.ROLE_TYPE, r.DESCRIPTION
+		FROM
+		    hk_role as r
+        LEFT JOIN hk_user_role as ur on ur.ROLE_ID = r.ID
+        WHERE ur.USER_ID = #{userId}
+	</select>
+    <!--查询角色信息-->
+    <select id="getAllRole" resultMap="roleMap" parameterType="java.util.Map">
+      SELECT
+        r.ID, r.ROLE_NAME, r.ROLE_TYPE, r.DESCRIPTION,r.CREATE_TIME
+      FROM
+       hk_role as r where 1=1
+       <if test="params.keyword !='' and params.keyword !=null">
+           AND(r.ROLE_NAME like CONCAT('%', #{params.keyword}, '%')
+            OR r.ROLE_TYPE like CONCAT('%', #{params.keyword}, '%')
+            OR r.DESCRIPTION like CONCAT('%', #{params.keyword}, '%')
+            OR r.CREATE_TIME like binary CONCAT('%', #{params.keyword}, '%')
+           )
+       </if>
+
+    </select>
+</mapper>

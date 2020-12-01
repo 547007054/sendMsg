@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>中铁建设</title>
+        <link rel="icon" type="image/x-icon" th:href="@{/static/images/favicon.ico}">
+        <link th:href="@{/static/css/login.css}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="left">
+                <img th:src="@{/static/images/logo.png}" alt="">
+
+                <div class="slogobg">
+                    <img class="slogo" th:src="@{/static/images/slogo.png}" alt="">
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="login-formbox">
+                    <div class="mb-1">
+                        <p class="mb-0" style="display: inline-block;font-size: 24px;">欢迎登陆</p>
+                        <p class="mb-0" style="float: right;font-size: 20px;">智慧工地</p>
+                    </div>
+                    <div class="position-relative">
+                        <img class="position-absolute imgPerson imguser" th:src="@{/static/images/user.png}" alt=""/>
+                        <input type="text" class="form-control pdl-50 userName" id="username" name="username" placeholder="请输入用户名" data-fv-field="loginName">
+                    </div>
+                    <div class="position-relative">
+                        <img class="position-absolute imgPerson imgpsd" th:src="@{/static/images/password.png}" alt=""/>
+                        <input type="password" class="form-control pdl-50 psd" id="password" name="password" placeholder="请输入密码">
+                    </div>
+                    <div class="position-relative">
+                        <img class="position-absolute imgPerson imgCode" th:src="@{/static/images/code.png}" alt=""/>
+                        <input type="text" class="form-control pdl-50 code" id="kaptcha" style="width: 49%;" name="kaptcha" placeholder="请输入验证码">
+                        <img class="imgcode" id="login-captcha" src="#" style="display: none"/>
+                    </div>
+                    <div class="rmbname">
+                        <div class="figure change_lf">
+                            <img class="change-ok-img" th:src="@{/static/images/ok-active.png}" alt=""/>
+                        </div>
+                        <span style="padding-left: 4px;">记住用户名</span>
+                    </div>
+                    <button class="login_btn" id="btnLogin" style="margin-top: 27px;">登录</button>
+                </div>
+                <div class="footer text-center">
+                    <p>中铁建设 @ <a href="http://www.ztjs.net.cn/" target="_blank">官网</a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" th:src="@{/static/plugins/layui/layui.js}"></script>
+        <script type="text/javascript" th:src="@{/static/js/common/Math.uuid.js}"></script>
+        <script type="text/javascript" th:src="@{/static/js/common/common.js}"></script>
+        <script type="text/javascript" th:src="@{/static/js/upms/login.js}"></script>
+        <script language="javascript">
+            if (window.top !== window.self) {
+                window.top.location = window.location
+            }
+
+            window.onload = function () {
+                var href = location.href;
+                if (href.indexOf("kickout") > 0) {
+                    alert('您的账号在另一台设备上登录, 如非本人操作, 请立即修改密码！');
+                }
+            };
+        </script>
+    </body>
+</html>

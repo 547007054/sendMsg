@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztjs.platform.mapper.project.ProjectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="projectMap" type="com.ztjs.platform.model.po.project.ProjectPo">
+        <id column="ID" property="id" javaType="int" jdbcType="INTEGER" />
+        <result column="PARENT_ID" property="parentId" javaType="int" jdbcType="INTEGER" />
+        <result column="NAME" property="name" javaType="string" jdbcType="VARCHAR" />
+        <result column="ORGANIZATION_PIC" property="organizationPic" javaType="string" jdbcType="VARCHAR" />
+        <result column="ENGINEERING_VIDEO" property="engineeringVideo" javaType="string" jdbcType="VARCHAR" />
+        <result column="DESCRIPTION" property="description" javaType="string" jdbcType="VARCHAR" />
+        <result column="LNG" property="lng" javaType="string" jdbcType="VARCHAR" />
+        <result column="LAT" property="lat" javaType="string" jdbcType="VARCHAR" />
+        <result column="CITY" property="city" javaType="string" jdbcType="VARCHAR" />
+        <result column="PROJECT_ADDRESS" property="projectAddress" javaType="string" jdbcType="VARCHAR" />
+        <result column="SORT" property="sort" javaType="int" jdbcType="INTEGER" />
+        <result column="CREATE_TIME" property="createTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztjs.platform.mapper.upms.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="userMap" type="com.ztjs.platform.model.po.upms.UserPo">
+        <id column="ID" property="id" javaType="int" jdbcType="INTEGER"/>
+        <result column="NICKNAME" property="nickname" javaType="string" jdbcType="VARCHAR"/>
+        <result column="SEX" property="sex" javaType="int" jdbcType="INTEGER"/>
+        <result column="BIRTHDAY" property="birthday" javaType="java.sql.Date" jdbcType="DATE"/>
+        <result column="ID_CARD" property="idCard" javaType="string" jdbcType="VARCHAR"/>
+        <result column="NATION" property="nation" javaType="string" jdbcType="VARCHAR"/>
+        <result column="NATIVE_PLACE" property="nativePlace" javaType="string" jdbcType="VARCHAR"/>
+        <result column="PHONE" property="phone" javaType="string" jdbcType="VARCHAR"/>
+        <result column="DUTY_ID" property="dutyId" javaType="int" jdbcType="INTEGER"/>
+        <result column="DEPARTMENT_ID" property="departmentId" javaType="int" jdbcType="INTEGER"/>
+        <result column="IS_ADMIN" property="isAdmin" javaType="int" jdbcType="INTEGER"/>
+        <result column="IS_HOME" property="isHome" javaType="int" jdbcType="INTEGER"/>
+        <result column="LOGIN_NAME" property="loginName" javaType="string" jdbcType="VARCHAR"/>
+        <result column="PASSWORD" property="password" javaType="string" jdbcType="VARCHAR"/>
+        <result column="SALT" property="salt" javaType="string" jdbcType="VARCHAR"/>
+        <result column="AVATAR" property="avatar" javaType="string" jdbcType="VARCHAR"/>
+        <result column="LOCKED" property="locked" javaType="int" jdbcType="INTEGER"/>
+        <result column="CREATE_TIME" property="createTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+</mapper>

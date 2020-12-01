@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <link rel="stylesheet" th:href="@{/static/plugins/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/plugins/layuiadmin/style/admin.css}" media="all"/>
+    <title>推送管理</title>
+    <style>
+        #upload{
+            margin: 50px 188px;
+            padding: 70px;
+            border: 1px solid #e2e2e2;
+        }
+        #beginUpload{
+            display: block;
+            margin: 0 auto;
+            width: 324px;
+        }
+        .layui-upload-choose{
+            padding: 5px 10px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="fullscreen" title="全屏">
+                        <i class="layui-icon layui-icon-screen-full"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;">
+                        <cite class="username"></cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a lay-href="">个人中心</a>
+                        </dd>
+                        <dd>
+                            <a lay-href="">修改密码</a>
+                        </dd>
+                        <hr>
+                        <dd style="text-align: center;">
+                            <a  onclick="logout()">退出</a>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-more-vertical"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+                    <a href="javascript:;">
+                        <i class="layui-icon layui-icon-more-vertical"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <!--<div class="layui-logo">
+                    <span>引江济淮智慧工地</span>
+                </div>-->
+                <div class="layui-logo">
+                        <span>
+                            <a href="http://119.23.243.224:8081/Drainage/index.html">引江济淮智慧工地</a>
+                        </span>
+                </div>
+
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+                    <li data-name="list" class="layui-nav-item" id="list1">
+                        <a class="noneI" href="javascript:;" lay-direction="2">
+                            <cite>主动推送</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a id="textPush">文本推送</a>
+                            </dd>
+                            <dd>
+                                <a id="picPush">图文推送</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="list" class="layui-nav-item" id="list">
+                        <a class="noneI" href="javascript:;" lay-direction="2">
+                            <cite>自动推送</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a id="fencePlan" lay-href="./fence.html">电子围栏规划</a>
+                            </dd>
+                            <dd>
+                                <a id="informationImport">信息导入</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layadmin-pagetabs" id="LAY_app_tabs">
+            <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd layadmin-event="closeThisTabs">
+                                <a href="javascript:;">关闭当前标签页</a>
+                            </dd>
+                            <dd layadmin-event="closeOtherTabs">
+                                <a href="javascript:;">关闭其它标签页</a>
+                            </dd>
+                            <dd layadmin-event="closeAllTabs">
+                                <a href="javascript:;">关闭全部标签页</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                    <li lay-id="home/console.html" lay-attr="home/console.html" class="layui-this">
+                        <i class="layui-icon layui-icon-home"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layadmin-tabsbody-item layui-show">
+                <iframe src="map.html" frameborder="0" class="layadmin-iframe"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/static/plugins/layui/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/static/js/fence/index.js}" charset="utf-8"></script>
+<script>
+    function logout() {
+        window.location.href = "http://119.23.243.224:8081/Drainage/login.html"
+    }
+    layui.config({
+        base: '../../static/plugins/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use('index');
+    layui.use('jquery', function () {
+        var $ = layui.$;
+        function getQueryString(name) {//name为传入参数
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        var login = getQueryString('login');
+        //flag区分两个推送，安全是0，工艺是1
+        var flag = getQueryString('flag');
+        sessionStorage.setItem("flag", flag);
+        console.log(sessionStorage.getItem("flag"));
+        if (login != "login") {
+            window.location.href = "http://119.23.243.224:8081/Drainage/login.html"
+        }else{
+            $(".layui-nav-item a .username").html("引江济淮")
+        }
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztjs.platform.mapper.fence.FenceMapper">
+
+<!--    &lt;!&ndash; 通用查询映射结果 &ndash;&gt;-->
+<!--    <resultMap id="fenceMap" type="com.ztjs.platform.model.po.fence.FencePo">-->
+<!--        <id column="ID" property="id" javaType="int" jdbcType="INTEGER" />-->
+<!--        <result column="FENCE_NAME" property="fenceName" javaType="string" jdbcType="VARCHAR" />-->
+<!--        <result column="LONGITUDE_COLUMN" property="longitudeColumn" javaType="string" jdbcType="VARCHAR" />-->
+<!--        <result column="LATITUDE_COLUMNS" property="latitudeColumns" javaType="string" jdbcType="VARCHAR" />-->
+<!--    </resultMap>-->
+
+<!--    &lt;!&ndash;查看具体的区域&ndash;&gt;-->
+<!--    <select id="selectByFenceName" resultType="com.ztjs.platform.model.po.fence.FencePo" parameterType="java.util.Map">-->
+<!--        SELECT * FROM DaXing_fence WHERE FENCE_NAME = #{params.fenceName}-->
+<!--    </select>-->
+<!--    <select id="findFence" resultType="FencePo" >-->
+<!--        SELECT *  FROM  YueRong_fence-->
+<!--    </select>-->
+    <!--查看工点-->
+    <select id="selectName" resultType="String" >
+        SELECT distinct name FROM WorkPointManage WHERE name is not null
+    </select>
+    <select id="selectName2" resultType="String" >
+        SELECT unitWork FROM WorkPointManage WHERE name = #{workPoint}
+    </select>
+    <!--查看具DayValue-->
+    <select id="selectDayValue" resultType="double" >
+        SELECT SUM(CONVERT(float,outValue)) FROM DayValue WHERE workPoint = #{workPoint}
+    </select>
+    <!--查看具MouValue-->
+    <select id="selectMouValue" resultType="double" >
+        SELECT SUM(CONVERT(float,outValue)) FROM MouthValue WHERE workPoint = #{workPoint}
+    </select>
+
+
+
+<!--    &lt;!&ndash;删除具体区域&ndash;&gt;-->
+<!--    <delete id="deleteUserByName" parameterType="java.util.Map">-->
+<!--        DELETE FROM DaXing_fence WHERE FENCE_NAME = #{params.fenceName}-->
+<!--    </delete>-->
+</mapper>

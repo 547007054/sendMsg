@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztjs.platform.mapper.project.ProjectBuildMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="projectBuildMap" type="com.ztjs.platform.model.po.project.ProjectBuildPo">
+        <id column="ID" property="id" javaType="int" jdbcType="INTEGER" />
+        <result column="BUILD_UNIT" property="buildUnit" javaType="string" jdbcType="VARCHAR" />
+        <result column="DESIGN_UNIT" property="designUnit" javaType="string" jdbcType="VARCHAR" />
+        <result column="CONSTRUCTION_UNIT" property="constructionUnit" javaType="string" jdbcType="VARCHAR" />
+        <result column="SUPERVISOR_UNIT" property="supervisorUnit" javaType="string" jdbcType="VARCHAR" />
+        <result column="PROSPECTING_UNIT" property="prospectingUnit" javaType="string" jdbcType="VARCHAR" />
+    </resultMap>
+
+</mapper>

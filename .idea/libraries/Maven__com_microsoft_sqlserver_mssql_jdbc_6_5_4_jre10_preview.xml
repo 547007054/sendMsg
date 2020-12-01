@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.microsoft.sqlserver:mssql-jdbc:6.5.4.jre10-preview">
+    <CLASSES>
+      <root url="jar://D:/Program Files/apache-maven-3.6.0/repo/com/microsoft/sqlserver/mssql-jdbc/6.5.4.jre10-preview/mssql-jdbc-6.5.4.jre10-preview.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/Program Files/apache-maven-3.6.0/repo/com/microsoft/sqlserver/mssql-jdbc/6.5.4.jre10-preview/mssql-jdbc-6.5.4.jre10-preview-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/Program Files/apache-maven-3.6.0/repo/com/microsoft/sqlserver/mssql-jdbc/6.5.4.jre10-preview/mssql-jdbc-6.5.4.jre10-preview-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

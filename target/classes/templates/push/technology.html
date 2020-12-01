@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="referrer" content="never">
+    <title>中铁建设</title>
+    <link rel="stylesheet" th:href="@{/static/plugins/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/static/plugins/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/static/module/admin.css}"/>
+    <link rel="stylesheet" th:href="@{/static/plugins/drawingManager/DrawingManager_min.css}" />
+    <link rel="stylesheet" th:href="@{/static/plugins/searchInfoWindow/SearchInfoWindow_min.css}" />
+    <style>
+        .layui-form.toolbar .layui-form-item.pictxt{
+            width:94%;
+            border:1px solid #d4d4d4;
+            height: 78%;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        .layui-form-label{
+            padding: 9px 15px 9px 0;
+        }
+        .pictxt .layui-block:first-child{
+            height: 40px;
+            background-color: #f6f8f9;
+            line-height: 40px;
+            margin-bottom: 10px;
+        }
+        .pushTxt{
+            position: relative;
+            width: 320px;
+            height:306.850px;
+            border:1px solid #d4d4d4;
+            padding: 10px;
+        }
+        .pushTxt .date{
+            padding: 0 10px;
+            font-size: 14px;
+            color: #8d8d8d;
+            height: 44px;
+            line-height: 44px;
+            border-bottom: 1px solid #d4d4d4;
+            text-align: center;
+        }
+        .pushTxt div img{
+            position: relative;
+            display: block;
+            width:100%;
+            height:164px;
+        }
+        .pushTxt div p{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .del{
+            position: absolute;
+            width:30px;
+            height: 22px;
+            right: 0px;
+            bottom: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 9999999;
+        }
+        .layui-form-item .layui-inline{
+            margin-right:22px;
+        }
+        .checkBox{
+            box-sizing: border-box;
+            position: absolute;
+            width: 320px;
+            height:306.850px;
+            left: 0;
+            top:-1px;
+            border:1px solid dodgerblue;
+            display: none;
+        }
+        .checkBox span{
+            position: absolute;
+            top:10px;
+            left:10px;
+            width:20px;
+            height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            background-color: #f0f0f0;
+        }
+        .checkBox i{
+            font-size: 14px;
+        }
+        .checkBox a{
+            display: block;
+            width:100%;
+            height:164px;
+        }
+        span.checked{
+            background-color: blue;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="page-loading">
+    <div class="ball-loader">
+        <span></span><span></span><span></span><span></span>
+    </div>
+</div>
+
+<!-- 正文开始 -->
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <div class="layui-form toolbar">
+                <div class="layui-form-item manyPeo">
+                    <div class="layui-inline">
+                        <label class="layui-form-label w-auto">群发对象:</label>
+                        <div class="layui-input-inline mr-10">
+                            <select name="group" lay-filter="group" id="group">
+                                <option value="">全部用户</option>
+                                <option th:each="group, groupStat : ${group}" th:value="${group.groupId}"
+                                        th:text="${group.groupId}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button id="pushBtn" class="layui-btn">群发</button>
+                    </div>
+                </div>
+                <div class="layui-form-item pictxt">
+                        <div class="layui-block">
+                            <i class="layui-icon">&#xe64a;</i>图文消息
+                        </div>
+                        <div class="layui-block box">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/static/plugins/layui/layui.js}" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/static/js/common/common.js}" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/static/js/push/technology.js}" charset="utf-8"></script>
+</body>
+</html>

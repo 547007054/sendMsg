@@ -1,0 +1,65 @@
+server:
+  port: 8013
+  servlet:
+    session:
+      timeout: 120
+  tomcat:
+    remote-ip-header: x-forward-for
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+    background-processor-delay: 30
+  connection-timeout: 5000
+
+spring:
+  application:
+    name: ztjs
+  profiles:
+    active: @profileActive@
+  main:
+    allow-bean-definition-overriding: true
+  aop:
+    auto: true
+    proxy-target-class: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mvc:
+    servlet:
+      load-on-startup: 1
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+    enabled: true
+    servlet:
+      content-type: text/html
+
+# myBaits-plus配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*/*Mapper.xml
+  type-aliases-package: com.ztjs.platform.model.po
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+  global-config:
+    refresh: true
+    banner: false
+    db-config:
+      id-type: AUTO
+      capital-mode: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0

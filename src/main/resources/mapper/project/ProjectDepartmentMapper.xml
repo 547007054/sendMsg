@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztjs.platform.mapper.project.ProjectDepartmentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="projectDepartmentMap" type="com.ztjs.platform.model.po.project.ProjectDepartmentPo">
+        <id column="ID" property="id" javaType="int" jdbcType="INTEGER" />
+        <result column="DEPARTMENT_ID" property="departmentId" javaType="int" jdbcType="INTEGER" />
+        <result column="USER_ID" property="userId" javaType="int" jdbcType="INTEGER" />
+    </resultMap>
+
+</mapper>
